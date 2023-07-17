@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
-  s.name = 'upyun_rails'
+  s.name = 'rails_deploy'
   s.version = '0.1.1'
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/qinmingyuan/upyun_rails'
-  s.summary = 'Upyun service for activestorage'
-  s.description = 'Upyun service for activestorage'
+  s.homepage = 'https://github.com/work-design/rails_deploy'
+  s.summary = 'Deploy from server'
+  s.description = 'Deploy from server'
   s.license = 'MIT'
 
   s.files = Dir[
@@ -14,9 +14,6 @@ Gem::Specification.new do |s|
     'Rakefile',
     'README.md'
   ]
-
-  s.add_dependency 'activestorage'
-  s.add_dependency 'rest-client'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'
