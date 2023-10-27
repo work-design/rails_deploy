@@ -48,10 +48,10 @@ module Deploy
       "rm -rf #{root.join(path)}"
     end
     cmds += (MOVED_DIRS + SHARED_DIRS).map do |path|
-      "ln -Tsfv #{root.join('../shared', path)} #{root.join(path)}"
+      "ln -Tsfv #{shared.join(path)} #{root.join(path)}"
     end
     cmds += SHARED_FILES.map do |path|
-      "ln -Tsfv #{root.join('../shared', path)} #{root.join(path)}"
+      "ln -Tsfv #{shared.join(path)} #{root.join(path)}"
     end
     cmds.each do |cmd|
       exec_cmd(cmd)
