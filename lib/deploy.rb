@@ -8,7 +8,7 @@ require 'logger'
 module Deploy
   MOVED_DIRS = [
     'log',
-    'tmp',
+    'tmp'
   ].freeze
   SHARED_DIRS = [
     'public/assets',
@@ -34,15 +34,11 @@ module Deploy
   end
 
   def init(root: Pathname.pwd, shared: Pathname.pwd.join('../shared'))
-    dirs = []
-    dirs += MOVED_DIRS.map { |dir| shared.join(dir) }
-    dirs += SHARED_DIRS.map { |dir| shared.join(dir) }
-    dirs += INIT_DIRS.map { |dir| shared.join(dir) }
+    dirs = (MOVED_DIRS + SHARED_DIRS + INIT_DIRS).map { |dir| shared.join(dir) }
     FileUtils.mkdir_p dirs, verbose: true
 
-    SHARED_FILES.map do |path|
-      `touch #{shared.join(path)}`
-    end
+    files = SHARED_FILES.map { |file| shared.join(file) }
+    FileUtils.touch files, verbose: true
 
     cmds = []
     cmds << 'bundle config set --local deployment true'
