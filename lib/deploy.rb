@@ -9,19 +9,19 @@ module Deploy
   MOVED_DIRS = [
     'log',
     'tmp',
-  ]
+  ].freeze
   SHARED_DIRS = [
     'public/assets',
     'public/fonts',
     'vendor/bundle'
   ].freeze
-  SHARED_FILES = [
-    'config/credentials/production.key'
-  ].freeze
   INIT_DIRS = [
     'tmp/sockets',
     'tmp/pids',
     'config/credentials'
+  ].freeze
+  SHARED_FILES = [
+    'config/credentials/production.key'
   ].freeze
   extend self
 
@@ -33,19 +33,17 @@ module Deploy
     OpenSSL::HMAC.hexdigest('sha1', RailsCom.config.github_hmac_key, data)
   end
 
-  def init_shared_paths(root = Pathname.pwd.join('../shared'))
+  def init(root: Pathname.pwd, shared: Pathname.pwd.join('../shared'))
     dirs = []
-    dirs += MOVED_DIRS.map { |dir| root.join(dir) }
-    dirs += SHARED_DIRS.map { |dir| root.join(dir) }
-    dirs += INIT_DIRS.map { |dir| root.join(dir) }
-    FileUtils.mkdir_p dirs
+    dirs += MOVED_DIRS.map { |dir| shared.join(dir) }
+    dirs += SHARED_DIRS.map { |dir| shared.join(dir) }
+    dirs += INIT_DIRS.map { |dir| shared.join(dir) }
+    FileUtils.mkdir_p dirs, verbose: true
 
     SHARED_FILES.map do |path|
-      `touch #{root.join(path)}`
+      `touch #{shared.join(path)}`
     end
-  end
 
-  def ln_shared_paths(root = Pathname.pwd)
     cmds = []
     cmds << 'bundle config set --local deployment true'
     cmds << 'bundle config set --local path vendor/bundle'
