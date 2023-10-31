@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rails_deploy'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_deploy'
