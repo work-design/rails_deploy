@@ -60,7 +60,7 @@ module Deploy
 
   def exec_cmds(env = 'production', added_cmds: [])
     start_at = Time.now
-    logger.debug "Deploy at #{start_at}"
+    logger.info "Deploy started at #{start_at}"
     cmds = [
       'whoami',
       'git pull',#  --recurse-submodules
@@ -73,14 +73,14 @@ module Deploy
       exec_cmd(cmd)
     end
     finish_at = Time.now
-    logger.debug "Deploy finished at #{finish_at}, used: #{finish_at - start_at}s"
+    logger.info "Deploy finished at #{finish_at}, used: #{(finish_at - start_at).round(2)}s"
   end
 
   def exec_cmd(cmd)
     Open3.popen2e(cmd) do |_, output, thread|
-      logger.debug "\e[35m  #{cmd} (PID: #{thread.pid})  \e[0m"
+      logger.info "\e[35m  #{cmd} (PID: #{thread.pid})  \e[0m"
       output.each_line do |line|
-        logger.debug "  #{line.chomp}"
+        logger.info "  #{line.chomp}"
       end
       puts "\n"
     end
