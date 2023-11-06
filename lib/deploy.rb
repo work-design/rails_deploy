@@ -58,7 +58,7 @@ module Deploy
     end
   end
 
-  def exec_cmds(env = 'production', added_cmds: [])
+  def exec_cmds(env = 'production', restart_cmds: ['bundle exec pumactl phased-restart'], added_cmds: [])
     start_at = Time.now
     logger.info "Deploy started at #{start_at}"
     cmds = [
@@ -67,7 +67,7 @@ module Deploy
       'bundle install'
     ]
     cmds << "RAILS_ENV=#{env} bundle exec rake db:migrate"
-    cmds << 'bundle exec pumactl restart'
+    cmds += restart_cmds
     cmds += Array(added_cmds)
     cmds.each do |cmd|
       exec_cmd(cmd)
