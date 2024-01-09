@@ -13,7 +13,8 @@ module Deploy
   SHARED_DIRS = [
     'public/assets',
     'public/fonts',
-    'vendor/bundle'
+    'vendor/bundle',
+    'acme'
   ].freeze
   INIT_DIRS = [
     'tmp/sockets',
