@@ -2,7 +2,7 @@ module KamalOverride
   module Configuration
 
     def proxy_image
-      'ccr.ccs.tencentyun.com/work-design/kamal-proxy:latest'
+      "ccr.ccs.tencentyun.com/work-design/kamal-proxy:#{PROXY_MINIMUM_VERSION}"
     end
 
   end
