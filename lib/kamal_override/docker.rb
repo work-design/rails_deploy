@@ -5,8 +5,8 @@ module KamalOverride
     def get_docker
       shell \
         any \
-          [ :curl, '-fsSL', 'https://meal.design/docker' ],
-          [ :wget, '-O -', 'https://meal.design/docker' ],
+          [ :curl, '-fsSL', 'https://work.design/docker' ],
+          [ :wget, '-O -', 'https://work.design/docker' ],
           [ :echo, "\"exit 1\"" ]
     end
 
