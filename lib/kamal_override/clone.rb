@@ -2,7 +2,10 @@ module KamalOverride
   module Clone
 
     def clone
-      git :clone, escaped_root, '--recurse-submodules=vendor/engine', '--shallow-submodules', path: config.builder.clone_directory.shellescape
+      [
+        git(:clone, escaped_root, path: config.builder.clone_directory.shellescape),
+        git(:submodule, :update, '--init', path: escaped_build_directory)
+      ]
     end
 
   end
