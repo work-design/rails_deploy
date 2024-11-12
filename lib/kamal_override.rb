@@ -1,3 +1,4 @@
+require 'kamal_override/build_clone'
 require 'kamal_override/clone'
 require 'kamal_override/configuration'
 require 'kamal_override/docker'
