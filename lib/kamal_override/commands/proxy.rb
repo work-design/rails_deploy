@@ -1,4 +1,4 @@
-module KamalOverride
+module KamalOverride::Commands
   module Proxy
 
     def run
@@ -18,4 +18,4 @@ module KamalOverride
   end
 end
 
-Kamal::Commands::Proxy.prepend KamalOverride::Proxy
+Kamal::Commands::Proxy.prepend KamalOverride::Commands::Proxy

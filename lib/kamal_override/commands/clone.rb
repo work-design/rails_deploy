@@ -1,4 +1,4 @@
-module KamalOverride
+module KamalOverride::Commands
   module Clone
 
     def clone
@@ -11,4 +11,4 @@ module KamalOverride
   end
 end
 
-Kamal::Commands::Builder::Clone.prepend KamalOverride::Clone
+Kamal::Commands::Builder::Clone.prepend KamalOverride::Commands::Clone

@@ -1,4 +1,4 @@
-module KamalOverride
+module KamalOverride::Commands
   module Docker
 
     private
@@ -13,4 +13,4 @@ module KamalOverride
   end
 end
 
-Kamal::Commands::Docker.prepend KamalOverride::Docker
+Kamal::Commands::Docker.prepend KamalOverride::Commands::Docker
