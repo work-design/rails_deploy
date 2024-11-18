@@ -1,5 +1,12 @@
 module KamalOverride::Configuration
   module Proxy
+    extend ActiveSupport::Concern
+
+    class_methods do
+      def validation_doc
+        @validation_doc ||= File.read(File.join(File.dirname(__FILE__), 'docs', "#{validation_config_key}.yml"))
+      end
+    end
 
     def deploy_options
       super.merge!(

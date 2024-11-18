@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rails_deploy'
-  s.version = '0.7.0'
+  s.version = '0.7.1'
   s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_deploy'
@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
     'Rakefile',
     'README.md'
   ]
+
+  s.add_dependency 'activesupport', '>= 7.0'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rake'
