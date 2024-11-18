@@ -7,3 +7,5 @@ require 'kamal_override/commands/proxy'
 
 require 'kamal_override/configuration/proxy'
 require 'kamal_override/configuration/role'
+
+require 'kamal_override/configuration/validator/proxy'
