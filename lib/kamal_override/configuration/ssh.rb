@@ -3,7 +3,7 @@ module KamalOverride::Configuration
 
     private
     def logger
-      Logger.new(Rails.root.join("log/#{Thread.current.native_thread_id}_kamal.log"))
+      Logger.new("log/#{Thread.current.native_thread_id}_kamal.log")
     end
 
   end
